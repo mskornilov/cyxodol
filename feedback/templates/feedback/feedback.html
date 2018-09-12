@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="row py-3">
+<hr class="float-left" width=45%>
+<span class="py-1">ОТЗЫВЫ</span>
+<hr class="float-right" width=45%>
+</div>
+
+<div class="container">
+
+<p>Вы можете оставить ваш отзыв о моих схемах и работах здесь.</p>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#feedback_form_div" aria-expanded="false" aria-controls="feedback_form_div">
+    Оставьте отзыв
+  </button>
+</p>
+<div class="collapse" id="feedback_form_div">
+
+<form class="feedback_form" action="index.html" method="post">
+  <div class="row">
+    <div class="col-6">
+      {{ form.name|as_crispy_field }}
+    </div>
+    <div class="col-6">
+      {{ form.email|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ form.message|as_crispy_field }}
+    </div>
+  </div>
+  {% csrf_token %}
+  <input type="submit" class='btn btn-primary' name="" value="Оставить отзыв">
+</form>
+</div>
+
+<hr>
+{% for m in messages %}
+<p class="text-left">{{ m.name }}</p>
+<p class="text-justify">{{ m.message }}</p>
+
+{% endfor %}
+</div>
+
+{% endblock %}

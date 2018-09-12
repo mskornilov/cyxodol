@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load static %}
+{% load thumbnail %}
+<html lang="ru">
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE; chrome=1" />
+
+<title>Вязаные шляпы из рафии купить в Краснодаре | Cyxodol японская пряжа рафия для вязания Краснодар</title>
+<meta name="title" content="Вязаные шляпы из рафии купить в Краснодаре | Cyxodol японская пряжа рафия для вязания Краснодар" />
+<meta name="keywords" content="" />
+<meta name="description" content="Cyxodol - интернет-магазин японской пряжи рафии для вязания, а также готовые вязаные шляпы из рафии,  схемы и аксессуары для вязания." />
+<meta name="image" content="" />
+
+    <meta property="og:title" content="Вязаные шляпы из рафии купить в Краснодаре | Cyxodol японская пряжа рафия для вязания Краснодар" />
+    <meta property="og:description" content="Cyxodol - интернет-магазин японской пряжи рафии для вязания, а также готовые вязаные шляпы из рафии, схемы и аксессуары для вязания." />
+    <meta property="og:url" content="http://cyxodol.com/" />
+    <meta property="og:type" content="website" />
+    	<meta property="og:image" content="{% static 'images/logo.jpg' %}" />
+
+
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+  <div class="container justify-content-center">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+    <img src="{% static 'images/logo.jpg' %}" width="130" height="50" alt="">
+  </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'flatpages:about_us' %}">О нас</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'store:products' %}">Магазин</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'blog:posts_list' %}">Блог</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'flatpages:faq' %}">Ответы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'flatpages:contacts' %}">Контакты</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'feedback:feedback' %}">Отзывы</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://www.ravelry.com/designers/valentina-grishina">Ravelry</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'flatpages:opt' %}">Опт</a>
+        </li>
+          {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'cart:cart_details' %}">Корзина({{ cart|length }})</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div>
+<!-- {% with 'http://'|add:request.get_host|add:'/static/'|add:'images/background.jpg' as path %}
+{% thumbnail path 'x300' crop=center as background %} -->
+<img id="background" src="{% static 'images/background.jpg' %}" style="display:block;margin-left:auto;margin-right:auto;width:50%;" alt="">
+<!-- {% endthumbnail %}
+{% endwith %} -->
+<!-- <div class="row py-2">
+      <div class="col-5">
+        <hr>
+      </div>
+      <div class="col-2 text-center">
+        cyxodol
+      </div>
+      <div class="col-5">
+        <hr>
+      </div>
+    </div> -->
+
+{% block content %}
+{% endblock %}
+
+
+
+<!-- <div class="right-panel">
+	<div class="scroll-top-btn">
+		<span class="ico-open-svg">
+			<svg height="15" width="25" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 15">
+				<path fill="#4c4c4c" fill-rule="evenodd" d="M 0.01 14.05 C 0.01 14.05 1.06 15 1.06 15 C 1.06 15 12.51 2.13 12.51 2.13 C 12.51 2.13 23.95 15 23.95 15 C 23.95 15 25 14.05 25 14.05 C 25 14.05 12.51 0.01 12.51 0.01 C 12.51 0.01 0.01 14.05 0.01 14.05 Z" />
+			</svg>
+		</span>
+	</div>
+</div> -->
+
+    <!-- <footer>
+        <div class="container">
+            <div class="share-box">
+                            </div>
+                        <div class="social-icons">
+                <style>
+
+</style>
+                        <div class="copyright">
+                <span class="photographer-copyright"><div style="text-align: center;"><span style="color:#696969;">&copy;&nbsp;cyxodol by Valentina Grishina, 2016-2018&nbsp;&nbsp;</span></div>
+
+<div style="text-align: center;"><a href="http://www.cyxodol.com/politika-konfedentsialnosti" target="_blank"><span style="color:#696969;">политика конфеденциальности</span></a><br />
+<a href="http://www.cyxodol.com/dogovor-oferta" target="_blank"><span style="color:#696969;">договор-оферта</span></a><br />
+&nbsp;</div>
+</span> <br> <a href="https://vigbo.com/?utm_source=clientsites&utm_medium=footer&utm_campaign=copywright" target="_blank" rel="noopener noreferrer">сайт от vigbo</a>
+            </div>
+        </div>
+    </footer> -->
+
+</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script>
+  var csrftoken = Cookies.get('csrftoken');
+  function csrfSafeMethod(method) {
+    // these http requests do not require csrf protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings){
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain){
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    }
+  });
+    $(document).ready(function(){
+      {% block domready %}
+      {% endblock %}
+
+    });
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	    </body>
+
+</html>

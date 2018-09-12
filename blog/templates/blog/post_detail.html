@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+
+<h2>{{ post.name }}</h2>
+<p>{{ post.text|safe }}</p>
+<a href="google.com" data-id='{{ post.id }}' class='likes'>{{ post.likes }}</a>
+<div class="col-6 pl-0">
+  <form class="" action="" method="post">
+    {{ form.author|as_crispy_field }}
+    {{ form.text|as_crispy_field }}
+    <input type="Submit" class="btn btn-primary" value="Post comment">
+    {% csrf_token %}
+  </form>
+</div>
+<hr>
+<h3>Комментарии</h3>
+{% for c in comments %}
+<h4>{{ c.author }}</h4>
+<p>{{ c.text }}</p>
+{% endfor %}
+</div>
+
+{% endblock %}
+{% block domready %}
+$('a.likes').click(function(e){
+  e.preventDefault();
+  $.post('{% url "blog:like" %}',{
+    id: $(this).data('id')
+  },
+  function(data){
+    if (data['status'] == 'ok')
+    {
+      $('a.likes').text({{ post.likes }} + 1)
+    }
+    else
+    {
+      $('a.likes').text(asdasd)
+    }
+  })
+});
+
+
+
+{% endblock %}

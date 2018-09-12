@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block content %}
+<div class="container">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'store:products' %}">Каталог</a></li>
+    <li class="breadcrumb-item">
+      <a href="{% url 'store:products_by_cat' category.id %}">{{ category.name }}</a>
+    </li>
+    <li class="breadcrumb-item active">{{ product.name }}</li>
+  </ol>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      {% thumbnail product.image '500x500' crop='center' as im %}
+      <img src="{{ im.url }}" alt="">
+      {% endthumbnail %}
+    </div>
+    <div class="col-6">
+      {{ product.description }}
+      <p><a class="btn btn-primary add_to_cart" data-id="{{ product.id }}" status="0" href="google.com">Добавить в корзину</a></p>
+    </div>
+  </div>
+
+</form>
+</div>
+</div>
+
+{% endblock %}
+{% block domready %}
+var total_items = {{ cart|length }}
+$('a.add_to_cart').click(function(e){
+  e.preventDefault();
+  $(this).attr("status", "1");
+  $.post('{% url "cart:add_to_cart" %}',{
+    id: $(this).data('id')
+  },
+  function(data){
+    if (data['status'] == 'ok')
+    {
+      total_items += 1
+      $('a[status="1"]').text('Добавлено в корзину')
+      $('#cart').text(`Корзина(${total_items})`)
+    }
+    else
+    {
+      $('a.add_to_cart').text('Товар уже в корзине')
+    }
+  })
+});
+{% endblock %}

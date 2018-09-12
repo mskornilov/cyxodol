@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+
+{% if cart %}
+<div class="text-center py-4">
+  <h3>Ваша корзина</h3>
+</div>
+<table width="100%">
+  <tr>
+    <th>Наименование товара</th>
+    <th>Удалить товар</th>
+    <th>Стоимость</th>
+  </tr>
+  {% for p in cart %}
+  <tr>
+    <td>{{ p.name }}</td>
+    <td>
+      <form class="" action="{% url 'cart:remove_from_cart' p.id %}" method="post">
+        <input type="submit" name="" value="X">
+        {% csrf_token %}
+      </form>
+    </td>
+    <td>{{ p.price }}</td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td>Общая стоимость</td>
+    <td></td>
+    <td>{{ total_price }}</td>
+  </tr>
+</table>
+<hr>
+<hr>
+
+<form class="" action="" method="post">
+  <div class="row">
+    <div class="col-12">
+      {{ form.delivery_method|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ form.name|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      {{ form.email|as_crispy_field }}
+    </div>
+    <div class="col-6">
+      {{ form.phone_number|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ form.address|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      {{ form.post_index|as_crispy_field }}
+    </div>
+    <div class="col-6">
+      {{ form.region|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ form.private_info_agreement|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{ form.comment|as_crispy_field }}
+    </div>
+  </div>
+  {% csrf_token %}
+  <input type="submit" class="btn btn-primary" name="" value="Оформить заказ">
+
+</form>
+</div>
+
+{% else %}
+<div class="text-center py-4" height="100%">
+
+<h1>Ваша корзина пуста</h1>
+</div>
+
+{% endif %}
+
+{% endblock %}

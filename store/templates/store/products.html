@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block content %}
+
+<div class="row py-3">
+<hr class="float-left" width=45%>
+<span class="py-1">МАГАЗИН</span>
+<hr class="float-right" width=45%>
+</div>
+
+<div class="container">
+
+{% if selected_cat %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'store:products' %}">Каталог</a></li>
+    <li class="breadcrumb-item active">{{ selected_cat }}</li>
+  </ol>
+</nav>
+{% endif %}
+
+<div class="row justify-content-center">
+{% for cat in category %}
+{% if forloop.last %}
+<a class="p-2" href="{% url 'store:products_by_cat' cat.id %}">{{ cat.name }}</a>
+{% else %}
+<a class="p-2" href="{% url 'store:products_by_cat' cat.id %}">{{ cat.name }}</a>
+<span class="p-2" >|</span>
+{% endif %}
+{% endfor %}
+<div class="container-fluid">
+{% for p in products %}
+{% thumbnail p.image '250x250' crop="center" as im %}
+<div style="height: 300px;" class="float-left col-md-3 justify-content-center">
+<a href="{% url 'store:product_details' p.category.id p.id %}">
+<img class="" src="{{ im.url }}" alt="NO IMAGE">
+</a>
+<a class="btn btn-primary add_to_cart" data-id="{{ p.id }}" status="0" href="google.com">Добавить в корзину</a>
+</div>
+{% endthumbnail %}
+{% endfor %}
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block domready %}
+var total_items = {{ cart|length }}
+$('a.add_to_cart').click(function(e){
+  e.preventDefault();
+  $(this).attr("status", "1");
+  $.post('{% url "cart:add_to_cart" %}',{
+    id: $(this).data('id')
+  },
+  function(data){
+    if (data['status'] == 'ok')
+    {
+      total_items += 1
+      $('a[status="1"]').text('Добавлено в корзину')
+      $('#cart').text(`Корзина(${total_items})`)
+    }
+    else
+    {
+      $('a.add_to_cart').text('Error')
+    }
+  })
+});
+{% endblock %}

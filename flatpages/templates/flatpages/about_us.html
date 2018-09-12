@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row py-3">
+<hr class="float-left" width=45%>
+<span class="py-1">О НАС</span>
+<hr class="float-right" width=45%>
+</div>
+<div class="container">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h2>Схемы</h2>
+    </div>
+    <div class="col-md-4 text-center">
+      <h2>Шляпы</h2>
+    </div>
+    <div class="col-md-4 text-center">
+      <h2>Аксессуары</h2>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img class="about_us_image "src="{% static 'images/about-us-1.png' %}" alt="">
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="about_us_image "src="{% static 'images/about-us-2.jpg' %}" alt="">
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="about_us_image "src="{% static 'images/about-us-3.jpg' %}" alt="">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-4 text-justify">
+      <p>Благодаря одному замечательному графическому дизайнеру, художнику и по совместительству моей сестре Маше, помимо готовых изделий, я могу предложить вам – схемы и инструкции для вязания. </p>
+      <p></p>
+      <p>Не обладая большим опытом и знаниями, вы без труда сможете воплотить мои проекты в жизнь, используя подробные описания работы.</p>
+    </div>
+    <div class="col-md-4 text-justify">
+      <p>Cyxodol – начался как блог, продолжился вязанием, а вылился в шляпы.</p>
+      <p>Вся линия готовых головных уборов и аксессуаров с самого начала и по сей день, реализуется силами одного человека – Вали Гришиной – меня, в связи с этим объемы производства маленькие, а изделия - лимитированные.</p>
+      <p>Идею вязаных крючком шляп я почерпнула у японцев, и хотя сейчас все головные уборы Cyxodol - авторские, пряжу для них я и сегодня закупаю в стране восходящего солнца. ​</p>
+    </div>
+    <div class="col-md-4 text-justify">
+      <p>В 2016 году я занялась разработкой небольшой линии аксессуаров и вспомогательных инструментов для вязальщиц.  </p>
+      <p></p>
+      <p>Не найдя на нашем рынке аналогов иностранных полезностей для вязальщиц, я решила попробовать создать их сама. </p>
+      <p></p>
+      <p>С результами моего взаимодействия с химиком, дизайнером, деревянной мануфактурой и типографией вы можете ознакомиться в магазине в  разделе "аксессуары и инструменты". </p>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+
+{% endblock %}
