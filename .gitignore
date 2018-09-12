@@ -4,5 +4,4 @@ __pycache__
 myvenv
 .DS_Store
 settings_secret.py
-/static
 db.sqlite3
